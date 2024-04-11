@@ -1,0 +1,23 @@
+name: ValidateSubmissions
+
+on: 
+  workflow_dispatch:
+  pull_request_target:
+    branches: main
+    paths: 
+      - 'model-output/**'
+      - 'model-metadata/**'
+
+
+jobs:
+  perform_validation_job:
+    runs-on: ubuntu-latest
+
+    #outputs:
+      
+    #env:
+
+    steps:
+      - name: TracingStep
+        run: echo 'Validate Submissions job activated'
+    
