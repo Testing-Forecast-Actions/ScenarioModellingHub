@@ -1,30 +1,25 @@
 {
     "schema_version":"https://raw.githubusercontent.com/Infectious-Disease-Modeling-Hubs/schemas/main/v2.0.0/admin-schema.json",
-    "name": "RSV Scenario Modeling Hub",
-    "maintainer": "RSV Scenario Modeling Hub Coordination Team",
+    "name": "Test Scenario Modeling Hub",
+    "maintainer": "ISI Foundation",
     "contact": {
-        "name": "RSV Scenario Modeling Hub Coordination Team",
-        "email": "scenariohub@midasnetwork.us"
+        "name": "Test Scenario Modeling Hub Coordination Team",
+        "email": "paolo.milano@isi.it"
     },
-    "repository_url": "https://github.com/midas-network/rsv-scenario-modeling-hub",
+    "repository_url": "https://github.com/Testing-Forecast-Actions/ScenarioModellingHub",
     "hub_models": [
         {
-            "team_abbr": "",
-            "model_abbr": "Ensemble",
+            "team_abbr": "ISI-Test",
+            "model_abbr": "hubEnsemble",
             "model_type": "ensemble"
         },
         {
-            "team_abbr": "",
-            "model_abbr": "Ensemble_LOP",
-            "model_type": "ensemble"
-        },
-        {
-            "team_abbr": "",
-            "model_abbr": "Ensemble_LOP_untrimmed",
-            "model_type": "ensemble"
+            "team_abbr": "ISI-Test",
+            "model_abbr": "hubBaseline",
+            "model_type": "baseline"
         }
     ],
-    "timezone": "US/Eastern",
-    "file_format":["parquet"],
+    "timezone": "Europe/Stockholm",
+    "file_format":["parquet", "csv"],
     "model_output_dir": "model-output"
 }
