@@ -1,23 +1,113 @@
-name: ValidateSubmissions
-
-on: 
-  workflow_dispatch:
+name: Validate Submission
+on:
   pull_request_target:
-    branches: main
-    paths: 
-      - 'model-output/**'
-      - 'model-metadata/**'
+    branches:
+      - main
 
+    paths:
+      - 'model-output/**'
+      - 'model-metadata/*'
+      - '!**README**'
+      - '!**.md'
+      - '!**.MD'
 
 jobs:
-  perform_validation_job:
-    runs-on: ubuntu-latest
+    validate-submission_job:
+        runs-on: ubuntu-latest
+        outputs:
+          changed_files: ${{ steps.get_changed_files.outputs.all_changed_files }}
 
-    #outputs:
-      
-    #env:
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+          with:
+            ref: ${{ github.event.pull_request.head.sha }}
+            fetch-depth: 1
 
-    steps:
-      - name: TracingStep
-        run: echo 'Validate Submissions job activated'
-    
+        # Get changes from pull request for later use
+        # --------------------------------------------      
+        - name: Get changes
+          id: get_changed_files
+          uses: tj-actions/changed-files@v41
+
+        
+        # DEBUG ONLY
+        - name: List all changed files
+          run: |
+            for file in ${{ steps.get_changed_files.outputs.all_changed_files }}; do
+              echo "$file was changed"
+            done
+
+
+        - name: Setup R
+          uses: r-lib/actions/setup-r@v2
+
+        - name: Install system dependencies
+          run: sudo apt-get install libcurl4-openssl-dev libudunits2-dev libgdal-dev
+
+
+        - name: Cache R packages
+          id: cache
+          if: runner.os != 'Windows'
+          uses: actions/cache@v2
+          with:
+            path: ${{ env.R_LIBS_USER }}
+            key: ${{ runner.os }}-${{ hashFiles('.github/requirements.txt') }}-1
+
+        - name: Install dependencies
+          if: steps.cache.outputs.cache-hit != 'true'
+          run: |
+            R -e 'Sys.setenv("NOT_CRAN" = TRUE)
+                  install.packages(c("arrow", "gh", "remotes"))
+                  Sys.unsetenv("NOT_CRAN")
+                  remotes::install_url("https://github.com/midas-network/SMHvalidation/archive/refs/heads/main.zip")
+                  remotes::install_url("https://github.com/Infectious-Disease-Modeling-Hubs/hubUtils/archive/refs/heads/main.zip")'
+          env:
+            GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+        - name: Run Validation
+          run: |
+            Rscript code/validation/validation.R
+          env:
+            GH_PR_NUMBER: ${{ github.event.pull_request.number }}
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+        # Eventually comment on it
+        - name: Comment PR
+          uses: thollander/actions-comment-pull-request@v2
+          with:
+            message: |
+              All validation checks completed successfully.
+            pr_number: ${{ github.event.pull_request.number }}
+
+
+        # Approve pull request 
+        # ---------------------------
+        - name: Approve Pull Request
+          uses: juliangruber/approve-pull-request-action@v2.0.0
+          with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            number: ${{ github.event.pull_request.number }}
+
+
+        # And then merge it
+        # ---------------------------
+        - name: Merge the pull request
+          id: merge_pr
+          run: |
+            echo ">>> Merging PR URL: ${{ github.event.pull_request.html_url }}"
+            gh pr merge --auto --squash $PR_URL
+          env:
+            PR_URL: ${{ github.event.pull_request.html_url }}
+            GH_TOKEN: ${{ github.token }}
+
+
+    call-persisting-wf:
+      needs: validate-submission_job
+      uses: Testing-Forecast-Actions/ScenarioModellingHub/.github/workflows/persist_changes.yml@main
+      with:
+        changes-list: ${{ needs.validate-submission_job.outputs.changed_files }}
+  
+      secrets:
+        envPAT: ${{ secrets.GITHUB_TOKEN }}
