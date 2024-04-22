@@ -12,6 +12,10 @@
 							"required":["2024-09-01"],
 							"optional":null
 						},
+						"season_cycle":{
+							"required":["2024_2025_1"],
+							"optional":null
+						},
 						"scenario_id":{
 							"required":["A-2024-09-01","B-2024-09-01","C-2024-09-01","D-2024-09-01","E-2024-09-01"],
 							"optional": null
