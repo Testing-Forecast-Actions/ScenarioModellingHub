@@ -1,12 +1,22 @@
 {
-    "schema_version":"https://raw.githubusercontent.com/Infectious-Disease-Modeling-Hubs/schemas/main/v2.0.0/admin-schema.json",
-    "name": "Test Scenario Modeling Hub",
+    "schema_version": "https://raw.githubusercontent.com/Infectious-Disease-Modeling-Hubs/schemas/main/v2.0.0/admin-schema.json",
+    "name": "European Flu Forecasting Hub",
     "maintainer": "ISI Foundation",
     "contact": {
-        "name": "Test Scenario Modeling Hub Coordination Team",
+        "name": "Paolo Milano",
         "email": "paolo.milano@isi.it"
     },
     "repository_url": "https://github.com/Testing-Forecast-Actions/ScenarioModellingHub",
     "file_format": ["csv"],
+    "hub_models": [{
+        "team_abbr": "respicast",
+        "model_abbr": "hubEnsemble",
+        "model_type": "ensemble"
+    },
+    {
+        "team_abbr": "respicast",
+        "model_abbr": "quantileBaseline",
+        "model_type": "baseline"
+    }],
     "timezone": "Europe/Stockholm"
 }
