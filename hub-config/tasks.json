@@ -2,13 +2,18 @@
 "schema_version": "https://raw.githubusercontent.com/Infectious-Disease-Modeling-Hubs/schemas/main/v2.0.0/tasks-schema.json",
 	"rounds":[
 		{
-			"round_id":"FLU1",
+			"round_id_from_variable":true,
+			"round_id":"round_id_src",
 			"model_tasks":[
 				{
 					"task_ids":
 					{
 						"origin_date":{
 							"required":["2024-09-01"],
+							"optional":null
+						},
+						"round_id_src":{
+							"required":["FLU1"],
 							"optional":null
 						},
 						"season_cycle":{
