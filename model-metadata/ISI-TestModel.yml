@@ -8,4 +8,4 @@ model_contributors:
       email: paolo.milano@isi.it
 team_model_designation: primary
 methods: A test model to submit test only data
-input_data: ECDC ERVISS
+data_inputs: ECDC ERVISS
