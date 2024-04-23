@@ -2,7 +2,7 @@
   "schema_version": "https://raw.githubusercontent.com/Infectious-Disease-Modeling-Hubs/schemas/main/v2.0.0/tasks-schema.json",
   "rounds": [
     {
-      "round_id_from_variable": false,
+      "round_id_from_variable": true,
       "round_id": "round_id",
       "model_tasks": [
         {
