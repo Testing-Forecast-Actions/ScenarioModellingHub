@@ -30,6 +30,14 @@
                         "location": {
                             "required": null,
                             "optional": ["GR"]
+                        },
+                        "scenario_id": {
+                            "required": null,
+                            "optional": ["A-2024-09-01"]
+                        },
+                        "pop_group": {
+                            "required": null,
+                            "optional": ["0-12"]
                         }
                     },
                     "output_type": {
