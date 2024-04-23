@@ -9,7 +9,7 @@
 					"task_ids":
 					{
 						"round_id": {
-							"required":"FLU1",
+							"required":["FLU1"],
 							"optional":null
 						},
 						"origin_date":{
