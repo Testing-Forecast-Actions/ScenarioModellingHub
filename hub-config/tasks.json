@@ -4,6 +4,7 @@
     {
       "model_tasks": [
         {
+          "task_ids": {
             "origin_date": {
               "required": [
                 "2024-09-01"
