@@ -11,10 +11,6 @@
                             "required": ["FLU1"],
                             "optional": null
                         },
-                        "origin_date": {
-                            "required": null,
-                            "optional": ["2024-02-07"]
-                        },
                         "target": {
                             "required": ["ILI incidence"],
                             "optional": null
