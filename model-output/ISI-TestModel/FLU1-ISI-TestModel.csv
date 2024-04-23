@@ -1,4 +1,4 @@
-round_id,origin_date,target_end_date,target,location,output_type,output_type_id,horizon,value,season_cycle,scenario_id,pop_group
+roundID,origin_date,target_end_date,target,location,output_type,output_type_id,horizon,value,season_cycle,scenario_id,pop_group
 FLU1,2024-02-07,2024-02-04,ILI incidence,GR,quantile,0.01,1,139.72217158840166,2024_2025_1,A-2024-09-01,low risk
 FLU1,2024-02-07,2024-02-04,ILI incidence,GR,quantile,0.025,1,181.04412405575368,2024_2025_1,A-2024-09-01,low risk
 FLU1,2024-02-07,2024-02-04,ILI incidence,GR,quantile,0.05,1,217.2132662056521,2024_2025_1,A-2024-09-01,low risk
