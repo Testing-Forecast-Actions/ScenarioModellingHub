@@ -2,7 +2,7 @@
 "schema_version": "https://raw.githubusercontent.com/Infectious-Disease-Modeling-Hubs/schemas/main/v2.0.0/tasks-schema.json",
 	"rounds":[
 		{
-			"round_id_col": "round_id",
+			"round_id_col": "roundID",
 			"model_tasks":[
 				{
 					"task_ids":
@@ -27,7 +27,7 @@
 							"required":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29],
 							"optional":null
 						},
-						"round_id": {
+						"roundID": {
 							"required":["FLU1"],
 							"optional":null
 						},
