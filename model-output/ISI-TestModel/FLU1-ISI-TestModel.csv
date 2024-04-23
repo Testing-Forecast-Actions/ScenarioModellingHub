@@ -1,3 +1,4 @@
+origin_date,target_end_date,target,location,output_type,output_type_id,horizon,value,scenario_id,pop_group,season_cycle
 2024-02-07,2024-02-04,ILI incidence,GR,quantile,0.01,1,139.72217158840166,A-2024-09-01,low risk,2024_2025_1
 2024-02-07,2024-02-04,ILI incidence,GR,quantile,0.025,1,181.04412405575368,A-2024-09-01,low risk,2024_2025_1
 2024-02-07,2024-02-04,ILI incidence,GR,quantile,0.05,1,217.2132662056521,A-2024-09-01,low risk,2024_2025_1
@@ -1378,4 +1379,3 @@
 2024-02-07,2024-02-25,ILI incidence,NO,quantile,0.95,4,157.8404007683844,A-2024-09-01,low risk,2024_2025_1
 2024-02-07,2024-02-25,ILI incidence,NO,quantile,0.975,4,269.0661391099553,A-2024-09-01,low risk,2024_2025_1
 2024-02-07,2024-02-25,ILI incidence,NO,quantile,0.99,4,537.7824739159722,A-2024-09-01,low risk,2024_2025_1
-origin_date,target_end_date,target,location,output_type,output_type_id,horizon,value,scenario_id,pop_group,season_cycle
