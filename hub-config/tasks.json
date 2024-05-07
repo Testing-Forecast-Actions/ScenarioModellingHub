@@ -8,7 +8,7 @@
                 {
                     "task_ids": {
                         "round_id": {
-                            "required": ["FLU1"],
+                            "required": ["2024_2025_1_FLU1"],
                             "optional": null
                         },
                         "target": {
@@ -34,10 +34,6 @@
                         "pop_group": {
                             "required": null,
                             "optional": ["0-12"]
-                        },
-                        "season_cycle": {
-                            "required": null,
-                            "optional": ["2024_2025_1"]
                         }
                     },
                     "output_type": {
