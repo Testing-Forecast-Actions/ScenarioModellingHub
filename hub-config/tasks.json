@@ -80,7 +80,19 @@
                                 "type": "double",
                                 "minimum": 0
                             }                        
-                        }
+                        },
+                        "sample":{
+                            "output_type_id_params":{
+                                “is_required”: true,
+                                “type”: “integer”,
+                                "min_samples_per_task": 100,
+                                "max_samples_per_task": 100
+                            },
+                            "value":{
+                                "type":"double",
+                                "minimum":0
+                            }
+                        }                        
                     },
                     "target_metadata": [
                         {
