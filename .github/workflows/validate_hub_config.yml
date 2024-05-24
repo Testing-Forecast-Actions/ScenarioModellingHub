@@ -15,7 +15,7 @@ jobs:
     - name: checkout data repo
       uses: actions/checkout@v3
       with:
-        token: ${{ secrets.envPAT }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         repository: 'Testing-Forecast-Actions/ScenarioModellingHub'
         ref: 'main'
         path: './repo/'
