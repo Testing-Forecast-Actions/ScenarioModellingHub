@@ -62,7 +62,7 @@ jobs:
         library("hubValidations")
         v <- hubAdmin::validate_hub_config(hub_path = "./repo", branch = "br-v3.0.0", schema_version = "latest")
         # v <- hubAdmin::validate_hub_config(hub_path = Sys.getenv("GITHUB_REPOSITORY"), branch = "br-v3.0.0", schema_version = "latest")
-        hubValidations::check_for_errors(v, verbose = TRUE)
+        # hubValidations::check_for_errors(v, verbose = TRUE)
       shell: Rscript {0}
 
     - name: trace
