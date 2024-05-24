@@ -32,15 +32,15 @@ jobs:
         sudo apt-get install libcurl4-openssl-dev libv8-dev libudunits2-dev libgdal-dev
 
     # install test dep
-    # - uses: r-lib/actions/setup-r-dependencies@v2
-    #   with:
-    #     packages: Infectious-Disease-Modeling-Hubs/hubValidations, any::sessioninfo
+    - uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        packages: Infectious-Disease-Modeling-Hubs/hubValidations, any::sessioninfo
 
-    - name: Install remotes 
-      run: |
-        install.packages("remotes")
+    # - name: Install remotes 
+    #   run: |
+    #     install.packages("remotes")
 
-      shell: Rscript {0}
+    #   shell: Rscript {0}
 
 
     - name: Install dependencies
