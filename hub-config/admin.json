@@ -7,7 +7,7 @@
         "email": "paolo.milano@isi.it"
     },
     "repository": {
-        name: "https://github.com/Testing-Forecast-Actions/ScenarioModellingHub"
+        "name": "https://github.com/Testing-Forecast-Actions/ScenarioModellingHub"
     },
     "file_format": ["csv", "parquet"],
     "hub_models": [{
