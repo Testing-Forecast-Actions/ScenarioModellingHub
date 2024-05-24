@@ -12,6 +12,14 @@ jobs:
       uses: actions/checkout@v3
 
 
+    - name: checkout data repo
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.envPAT }}
+        repository: 'Testing-Forecast-Actions/ScenarioModellingHub'
+        ref: 'main'
+        path: './repo/'
+
     # TEST ONLY -----------------------------------
     - uses: r-lib/actions/setup-r@v2
       with:
@@ -44,7 +52,8 @@ jobs:
     - name: Run hub config validations
       run: |
         library("hubValidations")
-        v <- hubAdmin::validate_hub_config(hub_path = Sys.getenv("GITHUB_REPOSITORY"), branch = "br-v3.0.0", schema_version = "latest")
+        v <- hubAdmin::validate_hub_config(hub_path = "./repo", branch = "br-v3.0.0", schema_version = "latest")
+        # v <- hubAdmin::validate_hub_config(hub_path = Sys.getenv("GITHUB_REPOSITORY"), branch = "br-v3.0.0", schema_version = "latest")
         hubValidations::check_for_errors(v, verbose = TRUE)
       shell: Rscript {0}
 
