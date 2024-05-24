@@ -38,6 +38,7 @@ jobs:
 
     - name: Install dependencies
       run: |
+        install.packages(c('gh',remotes'))
         R -e 'remotes::install_github("Infectious-Disease-Modeling-Hubs/hubAdmin", ref = "feature/handle-samples")'
         
         # install.packages(c("arrow", "gh", "remotes"))
