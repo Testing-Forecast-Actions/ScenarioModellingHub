@@ -57,6 +57,9 @@ jobs:
         - name: Install remotes
           run: |
             install.packages("remotes")
+            install.packages("R.utils")
+
+
 
           shell: Rscript {0}
 
