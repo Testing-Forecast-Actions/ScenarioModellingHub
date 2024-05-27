@@ -64,12 +64,17 @@ jobs:
           shell: Rscript {0}
 
 
-        - name: Install validations
-          run: |
-            remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations")
-            # remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")
 
-          shell: Rscript {0}
+        - uses: r-lib/actions/setup-r-dependencies@v2
+          with:
+            packages: Infectious-Disease-Modeling-Hubs/hubValidations, any::sessioninfo
+
+        # - name: Install validations
+        #   run: |
+        #     remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations")
+        #     # remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")
+
+        #   shell: Rscript {0}
 
 
 
