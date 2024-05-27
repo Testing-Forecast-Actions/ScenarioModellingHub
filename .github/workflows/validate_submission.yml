@@ -63,7 +63,8 @@ jobs:
 
         - name: Install validations
           run: |
-            remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")
+            remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations")
+            # remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")
 
           shell: Rscript {0}
 
