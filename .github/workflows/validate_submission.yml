@@ -49,9 +49,15 @@ jobs:
             sudo apt-get update
             sudo apt-get install libcurl4-openssl-dev libv8-dev
 
-        - uses: r-lib/actions/setup-r-dependencies@v2
-          with:
-            packages: Infectious-Disease-Modeling-Hubs/hubValidations, any::sessioninfo
+        # - uses: r-lib/actions/setup-r-dependencies@v2
+        #   with:
+        #     packages: Infectious-Disease-Modeling-Hubs/hubValidations, any::sessioninfo
+
+
+        - name: Install dependencies
+          run: |
+            R -e 'remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")'
+      
 
         - name: Run validations
           env:
