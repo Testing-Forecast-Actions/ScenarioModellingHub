@@ -53,6 +53,10 @@ jobs:
         #   with:
         #     packages: Infectious-Disease-Modeling-Hubs/hubValidations, any::sessioninfo
 
+        - name: install remotes
+          run: |
+            Rscript -e 'install.packages("remotes")'
+
 
         - name: Install dependencies
           run: |
