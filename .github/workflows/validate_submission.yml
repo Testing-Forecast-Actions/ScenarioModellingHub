@@ -58,6 +58,7 @@ jobs:
           run: |
             install.packages("remotes")
             install.packages("R.utils")
+            install.packages("arrow", repos = c("https://apache.r-universe.dev", "https://cran.r-project.org"))
 
 
 
@@ -65,13 +66,13 @@ jobs:
 
 
 
-        - uses: r-lib/actions/setup-r-dependencies@v2
-          with:
-            packages: Infectious-Disease-Modeling-Hubs/hubValidations, any::sessioninfo
+        # - uses: r-lib/actions/setup-r-dependencies@v2
+        #   with:
+        #     packages: Infectious-Disease-Modeling-Hubs/hubValidations, any::sessioninfo
 
-        # - name: Install validations
-        #   run: |
-        #     remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations")
+        - name: Install validations
+          run: |
+            remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations")
         #     # remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")
 
         #   shell: Rscript {0}
