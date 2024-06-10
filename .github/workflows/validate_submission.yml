@@ -66,19 +66,21 @@ jobs:
 
 
 
+        - name: Install dependencies
+          run: |
+            R -e 'remotes::install_github("Infectious-Disease-Modeling-Hubs/hubAdmin", ref = "feature/handle-samples")
+              remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")'
+        
+
         # - uses: r-lib/actions/setup-r-dependencies@v2
         #   with:
         #     packages: Infectious-Disease-Modeling-Hubs/hubValidations, any::sessioninfo
 
-        - uses: r-lib/actions/setup-r-dependencies@v2
-          with:
-            extra-packages: any::pkgdown, local::.
+        # - name: Install validations
+        #   run: |
+        #     remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations")
 
-        - name: Install validations
-          run: |
-            remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations")
-
-          shell: Rscript {0}
+        #   shell: Rscript {0}
 
 
         #     # remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")
