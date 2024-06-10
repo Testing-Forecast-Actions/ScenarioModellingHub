@@ -70,7 +70,9 @@ jobs:
           run: |
             R -e 'remotes::install_github("Infectious-Disease-Modeling-Hubs/hubAdmin", ref = "feature/handle-samples")
               remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")'
-        
+
+          env:
+            GITHUB_PAT: ${{ secrets.R_PAT }}
 
         # - uses: r-lib/actions/setup-r-dependencies@v2
         #   with:
