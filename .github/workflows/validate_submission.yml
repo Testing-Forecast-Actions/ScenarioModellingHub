@@ -117,7 +117,7 @@ jobs:
         - name: Run hub config validations
           run: |
             library("hubAdmin")
-            v <- hubAdmin::validate_hub_config(hub_path = "./repo", branch = "br-v3.0.0", schema_version = "latest")
+            v <- hubAdmin::validate_hub_config(hub_path = ".", branch = "br-v3.0.0", schema_version = "latest")
           shell: Rscript {0}
 
         # - name: Run validations
