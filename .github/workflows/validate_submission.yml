@@ -72,7 +72,7 @@ jobs:
             print(env_path)
             print("TRACE_END")
             Sys.unsetenv("GITHUB_PAT")
-            pak::pkg_install("Infectious-Disease-Modeling-Hubs/hubAdmin@feature/handle-samples")
+            pak::pkg_install("Infectious-Disease-Modeling-Hubs/hubAdmin@feature/sample-support")
           shell: Rscript {0}
           # env:
           #   GITHUB_PAT: ${{ secrets.R_PAT }}
