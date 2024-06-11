@@ -59,7 +59,7 @@ jobs:
             install.packages("remotes")
             install.packages("pak")
             install.packages("R.utils")
-            install.packages("arrow", repos = c("https://apache.r-universe.dev", "https://cran.r-project.org"))
+            # install.packages("arrow", repos = c("https://apache.r-universe.dev", "https://cran.r-project.org"))
             
           shell: Rscript {0}
 
