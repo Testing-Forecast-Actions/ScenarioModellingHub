@@ -57,11 +57,10 @@ jobs:
         - name: Install remotes
           run: |
             install.packages("remotes")
+            install.packages("pak")
             install.packages("R.utils")
             install.packages("arrow", repos = c("https://apache.r-universe.dev", "https://cran.r-project.org"))
-
-
-
+            
           shell: Rscript {0}
 
 
@@ -73,7 +72,7 @@ jobs:
             print(env_path)
             print("TRACE_END")
             Sys.unsetenv("GITHUB_PAT")
-            remotes::install_github("Infectious-Disease-Modeling-Hubs/hubAdmin", ref = "feature/handle-samples")
+            pak::pkg_install("Infectious-Disease-Modeling-Hubs/hubAdmin@feature/handle-samples")
           shell: Rscript {0}
           # env:
           #   GITHUB_PAT: ${{ secrets.R_PAT }}
