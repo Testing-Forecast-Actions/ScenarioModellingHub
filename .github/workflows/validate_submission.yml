@@ -95,15 +95,19 @@ jobs:
           env:
             PR_NUMBER: ${{ github.event.number }}
           run: |
-            library("hubValidations")
-            v <- hubValidations::validate_pr(
-                gh_repo = Sys.getenv("GITHUB_REPOSITORY"),
-                pr_number = Sys.getenv("PR_NUMBER"),
-                skip_check_config = TRUE
-            )
-            print("ERRORS:")
-            print(v)
-            hubValidations::check_for_errors(v, verbose = TRUE)
+            library("hubValidations")             
+            for(file in ${{ steps.get_changed_files.outputs.all_changed_files }}) {
+              print("Running validation") 
+              print(file)
+              v <- validate_submission(
+                  gh_repo = Sys.getenv("GITHUB_REPOSITORY"),
+                  pr_number = Sys.getenv("PR_NUMBER"),
+                  skip_check_config = TRUE
+              )
+              print("ERRORS:")
+              print(v)
+              hubValidations::check_for_errors(v, verbose = TRUE)
+            }
           shell: Rscript {0}
 
         # TEST_ONLY END ---------------------------------
