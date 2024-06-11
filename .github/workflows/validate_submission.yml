@@ -69,9 +69,9 @@ jobs:
         - name: Install hubAdmin
           run: |
             env_path <- Sys.getenv("GITHUB_PAT")
-            print("TRACE___")
+            print("TRACE")
             print(env_path)
-            print("TRACE_END___)
+            print("TRACE_END")
             Sys.unsetenv("GITHUB_PAT")
             remotes::install_github("Infectious-Disease-Modeling-Hubs/hubAdmin", ref = "feature/handle-samples")
           shell: Rscript {0}
