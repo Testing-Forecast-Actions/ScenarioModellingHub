@@ -112,20 +112,25 @@ jobs:
         # - name: Install dependencies
         #   run: |
         #     R -e 'remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")'
-      
 
-        - name: Run validations
-          env:
-            PR_NUMBER: ${{ github.event.number }}
+      # validate hub configurations
+        - name: Run hub config validations
           run: |
             library("hubValidations")
-            v <- hubValidations::validate_pr(
-                gh_repo = Sys.getenv("GITHUB_REPOSITORY"),
-                pr_number = Sys.getenv("PR_NUMBER"),
-                skip_submit_window_check = FALSE
-            )
-            hubValidations::check_for_errors(v, verbose = TRUE)
-          shell: Rscript {0}
+            v <- hubAdmin::validate_hub_config(hub_path = "./repo", branch = "br-v3.0.0", schema_version = "latest")
+
+        # - name: Run validations
+        #   env:
+        #     PR_NUMBER: ${{ github.event.number }}
+        #   run: |
+        #     library("hubValidations")
+        #     v <- hubValidations::validate_pr(
+        #         gh_repo = Sys.getenv("GITHUB_REPOSITORY"),
+        #         pr_number = Sys.getenv("PR_NUMBER"),
+        #         skip_submit_window_check = FALSE
+        #     )
+        #     hubValidations::check_for_errors(v, verbose = TRUE)
+        #   shell: Rscript {0}
 
         # TEST_ONLY END ---------------------------------
 
