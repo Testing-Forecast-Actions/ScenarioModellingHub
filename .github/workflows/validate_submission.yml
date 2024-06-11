@@ -75,13 +75,13 @@ jobs:
             Sys.unsetenv("GITHUB_PAT")
             remotes::install_github("Infectious-Disease-Modeling-Hubs/hubAdmin", ref = "feature/handle-samples")
           shell: Rscript {0}
-          env:
-            GITHUB_PAT: ${{ secrets.R_PAT }}
+          # env:
+          #   GITHUB_PAT: ${{ secrets.R_PAT }}
 
         - name: Install hubValidations
           run: remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")
-          env:
-            GITHUB_PAT: ${{ secrets.R_PAT }}
+          # env:
+          #   GITHUB_PAT: ${{ secrets.R_PAT }}
             
           shell: Rscript {0}
         # - name: Install dependencies
