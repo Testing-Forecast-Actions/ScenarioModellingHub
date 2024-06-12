@@ -93,10 +93,11 @@ jobs:
         # Validate data submission
         - name: Run validations
           env:
+            files: ${{ steps.get_changed_files.outputs.all_changed_files }}
             PR_NUMBER: ${{ github.event.number }}
           run: |
             library("hubValidations")             
-            for(file in ${{ steps.get_changed_files.outputs.all_changed_files }}) {
+            for(file in $files) {
               print("Running validation") 
               print(file)
               v <- validate_submission(
