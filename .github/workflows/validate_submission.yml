@@ -90,6 +90,19 @@ jobs:
           shell: Rscript {0}
 
 
+        - name: trace input
+          env:
+            files: ${{ steps.get_changed_files.outputs.all_changed_files }}
+            PR_NUMBER: ${{ github.event.number }}
+          run: |
+            print("files:")
+            for(file in $files)
+              print (file)
+
+            print("pr number")
+            print($PR_NUMBER)
+              
+
         # Validate data submission
         - name: Run validations
           env:
@@ -97,6 +110,7 @@ jobs:
             PR_NUMBER: ${{ github.event.number }}
           run: |
             library("hubValidations")             
+                        
             for(file in $files) {
               print("Running validation") 
               print(file)
