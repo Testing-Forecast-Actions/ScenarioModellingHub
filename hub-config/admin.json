@@ -5,7 +5,11 @@
     "contact": {
         "name": "Paolo Milano",
         "email": "paolo.milano@isi.it"
+    },   
+    "repository": {
+        "name": "https://github.com/Testing-Forecast-Actions/ScenarioModellingHub"
     },
+
     "file_format": ["csv", "parquet"],
     "timezone": "Europe/Stockholm"
 }
