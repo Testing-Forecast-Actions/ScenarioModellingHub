@@ -1,15 +1,16 @@
 name: Validate Submission
 on:
-  pull_request_target:
-    branches:
-      - main
+  workflow_dispatch:
+  # pull_request_target:
+  #   branches:
+  #     - main
 
-    paths:
-      - 'model-output/**'
-      - 'model-metadata/*'
-      - '!**README**'
-      - '!**.md'
-      - '!**.MD'
+  #   paths:
+  #     - 'model-output/**'
+  #     - 'model-metadata/*'
+  #     - '!**README**'
+  #     - '!**.md'
+  #     - '!**.MD'
 
 jobs:
     validate-submission_job:
