@@ -50,11 +50,12 @@ jobs:
     
     # Store changes 
     # -------------------------
-    # - name: Store Changes 
-    #   env:
-    #     data: ${{ inputs.changes-list }}
-    #   run: |
-    #     python ./tools/code/persist_changes.py
+    - name: Store Changes 
+      env:
+        data: ${{ inputs.changes-list }}
+      run: |
+        python ./tools/code/SH_persist_changes.py
+
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v7
