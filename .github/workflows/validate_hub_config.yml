@@ -34,36 +34,14 @@ jobs:
     # install test dep
     - uses: r-lib/actions/setup-r-dependencies@v2
       with:
-        packages: Infectious-Disease-Modeling-Hubs/hubValidations, any::sessioninfo
-
-    # - name: Install remotes 
-    #   run: |
-    #     install.packages("remotes")
-
-    #   shell: Rscript {0}
-
-
-    - name: Install dependencies
-      run: |
-        R -e 'remotes::install_github("Infectious-Disease-Modeling-Hubs/hubAdmin", ref = "feature/handle-samples")
-              remotes::install_github("Infectious-Disease-Modeling-Hubs/hubValidations", ref = "feature/handle-samples")'
-        
-        # install.packages(c("arrow", "gh", "remotes"))
-        # R -e 'Sys.setenv("NOT_CRAN" = TRUE)
-        #     Sys.unsetenv("NOT_CRAN")
-        #     remotes::install_url("https://github.com/midas-network/SMHvalidation/archive/refs/heads/main.zip")
-        #     remotes::install_url("https://github.com/Infectious-Disease-Modeling-Hubs/hubUtils/archive/refs/heads/main.zip")'
-            
-      env:
-        GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+        packages: hubverse-org/hubAdmin, any::sessioninfo
 
     # validate hub configurations
     - name: Run hub config validations
       run: |
-        library("hubValidations")
-        v <- hubAdmin::validate_hub_config(hub_path = "./repo", branch = "br-v3.0.0", schema_version = "latest")
-        # v <- hubAdmin::validate_hub_config(hub_path = Sys.getenv("GITHUB_REPOSITORY"), branch = "br-v3.0.0", schema_version = "latest")
-        # hubValidations::check_for_errors(v, verbose = TRUE)
+        library("hubAdmin")
+        v <- hubAdmin::validate_hub_config(hub_path = "./repo",  schema_version = "latest")
+        view_config_val_errors(v)
       shell: Rscript {0}
 
     - name: trace
