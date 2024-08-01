@@ -1,4 +1,4 @@
-name: "UpdateEpidemiolocicalCovid-19"
+name: "UpdateEpidemiolocicalInfluenza"
 on:
 
   workflow_dispatch:
