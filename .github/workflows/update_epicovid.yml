@@ -39,11 +39,11 @@ jobs:
     # --------------------------------
     - uses: actions/setup-python@v4
       with:
-        python-version: '3.10' 
+        python-version: '3.10'
 
     # Install additional packages 
     # --------------------------------
-    - run: pip install pandas==1.2.5
+    - run: pip install pandas
 
 
     # Run Python script to import erviss data
@@ -51,8 +51,13 @@ jobs:
     - name: Import Erviss data
       id: import_erviss
       run: |
+        echo ">>> Updating ICUadmissions..."
+        python ./tools/code/SH_get_erviss_data.py --indicator "ICUadmissions" --url "https://raw.githubusercontent.com/EU-ECDC/Respiratory_viruses_weekly_data/main/data/nonSentinelSeverity.csv"
+        echo ">>> Updating deaths..."
         python ./tools/code/SH_get_erviss_data.py --hub_path ./repo --disease_name "ILI"
-
+        echo ">>> Updating hospitaladmissions..."
+        python ./tools/code/SH_get_erviss_data.py --hub_path ./repo --disease_name "ILI"
+        echo ">>> Updates completed"
 
     # Commit changes to dt
     # -----------------------------------------
