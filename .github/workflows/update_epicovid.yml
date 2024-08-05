@@ -52,11 +52,17 @@ jobs:
       id: import_erviss
       run: |
         echo ">>> Updating ICUadmissions..."
-        python ./tools/code/SH_get_erviss_data.py --indicator "ICUadmissions" --url "https://raw.githubusercontent.com/EU-ECDC/Respiratory_viruses_weekly_data/main/data/nonSentinelSeverity.csv"
+        python ./tools/code/SH_get_erviss_data.py --indicator "ICUadmissions" --pathogen "SARS-CoV-2"  \
+        --url "https://raw.githubusercontent.com/EU-ECDC/Respiratory_viruses_weekly_data/main/data/nonSentinelSeverity.csv" \
+        --path_to_save "./repo/auxiliary-data/covid-19/epidemiological"
         echo ">>> Updating deaths..."
-        python ./tools/code/SH_get_erviss_data.py --hub_path ./repo --disease_name "ILI"
+        python ./tools/code/SH_get_erviss_data.py --indicator "deaths" --pathogen "SARS-CoV-2"  \
+        --url "https://raw.githubusercontent.com/EU-ECDC/Respiratory_viruses_weekly_data/main/data/nonSentinelSeverity.csv" \
+        --path_to_save "./repo/auxiliary-data/covid-19/epidemiological"
         echo ">>> Updating hospitaladmissions..."
-        python ./tools/code/SH_get_erviss_data.py --hub_path ./repo --disease_name "ILI"
+        python ./tools/code/SH_get_erviss_data.py --indicator "hospitaladmissions" --pathogen "SARS-CoV-2" \
+        --url "https://raw.githubusercontent.com/EU-ECDC/Respiratory_viruses_weekly_data/main/data/nonSentinelSeverity.csv" \
+        --path_to_save "./repo/auxiliary-data/covid-19/epidemiological"
         echo ">>> Updates completed"
 
     # Commit changes to dt
