@@ -78,12 +78,12 @@ jobs:
 
 
 
-  call-persisting-wf:
-    needs: import_erviss_data_job    
-    uses: Testing-Forecast-Actions/ScenarioModellingHub/.github/workflows/persist_changes.yml@main
-    #uses: european-modelling-hubs/RespiCompass/.github/workflows/persist_changes.yml@main
-    with:
-      changes-list: ${{ needs.import_erviss_data_job.outputs.changed_files }}
+  # call-persisting-wf:
+  #   needs: import_erviss_data_job    
+  #   uses: Testing-Forecast-Actions/ScenarioModellingHub/.github/workflows/persist_changes.yml@main
+  #   #uses: european-modelling-hubs/RespiCompass/.github/workflows/persist_changes.yml@main
+  #   with:
+  #     changes-list: ${{ needs.import_erviss_data_job.outputs.changed_files }}
 
-    secrets:
-      envPAT: ${{ secrets.GITHUB_TOKEN }} 
+  #   secrets:
+  #     envPAT: ${{ secrets.GITHUB_TOKEN }} 
