@@ -52,8 +52,6 @@ jobs:
     - name: Import Erviss data
       id: import_erviss
       run: |
-        python ./tools/code/SH_get_erviss_data.py --hub_path ./repo --disease_name "ILI"
-
         echo ">>> Updating ARIconsultationrate..."
         python ./tools/code/SH_get_erviss_data.py --indicator "ARIconsultationrate" --pathogen "Influenza"  \
         --url "https://raw.githubusercontent.com/EU-ECDC/Respiratory_viruses_weekly_data/main/data/ILIARIRates.csv" \
