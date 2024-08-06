@@ -31,7 +31,8 @@ jobs:
       uses: actions/checkout@v3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        repository: 'european-modelling-hubs/RespiCompass'
+        repository: 'Testing-Forecast-Actions/ScenarioModellingHub'
+        # repository: 'european-modelling-hubs/RespiCompass'
         ref: 'main'
         path: './repo/'
 
@@ -43,7 +44,7 @@ jobs:
 
     # Install additional packages 
     # --------------------------------
-    - run: pip install pandas==1.2.5
+    - run: pip install pandas
 
 
     # Run Python script to import erviss data
@@ -52,6 +53,15 @@ jobs:
       id: import_erviss
       run: |
         python ./tools/code/SH_get_erviss_data.py --hub_path ./repo --disease_name "ILI"
+
+        echo ">>> Updating ARIconsultationrate..."
+        python ./tools/code/SH_get_erviss_data.py --indicator "ARIconsultationrate" --pathogen "Influenza"  \
+        --url "https://raw.githubusercontent.com/EU-ECDC/Respiratory_viruses_weekly_data/main/data/ILIARIRates.csv" \
+        --path_to_save "./repo/auxiliary-data/influenza/epidemiological"
+        echo ">>> Updating ILIconsultationrate..."
+        python ./tools/code/SH_get_erviss_data.py --indicator "ILIconsultationrate" --pathogen "Influenza"  \
+        --url "https://raw.githubusercontent.com/EU-ECDC/Respiratory_viruses_weekly_data/main/data/ILIARIRates.csv" \
+        --path_to_save "./repo/auxiliary-data/influenza/epidemiological"
 
 
     # Commit changes to dt
@@ -66,11 +76,11 @@ jobs:
 
 
 
-  call-persisting-wf:
-    needs: import_erviss_data_job
-    uses: european-modelling-hubs/RespiCompass/.github/workflows/persist_changes.yml@main
-    with:
-      changes-list: ${{ needs.import_erviss_data_job.outputs.changed_files }}
+  # call-persisting-wf:
+  #   needs: import_erviss_data_job
+  #   uses: european-modelling-hubs/RespiCompass/.github/workflows/persist_changes.yml@main
+  #   with:
+  #     changes-list: ${{ needs.import_erviss_data_job.outputs.changed_files }}
 
-    secrets:
-      envPAT: ${{ secrets.GITHUB_TOKEN }} 
+  #   secrets:
+  #     envPAT: ${{ secrets.GITHUB_TOKEN }} 
