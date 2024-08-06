@@ -31,7 +31,8 @@ jobs:
       uses: actions/checkout@v3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        repository: 'european-modelling-hubs/RespiCompass'
+        repository: 'Testing-Forecast-Actions/ScenarioModellingHub/'
+        # repository: 'european-modelling-hubs/RespiCompass'
         ref: 'main'
         path: './repo/'
 
