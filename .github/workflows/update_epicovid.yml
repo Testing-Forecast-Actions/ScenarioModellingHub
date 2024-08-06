@@ -66,6 +66,17 @@ jobs:
         --path_to_save "./repo/auxiliary-data/covid-19/epidemiological"
         echo ">>> Updates completed"
 
+
+    # Make a copy of targets
+    # -----------------------------------------------
+    - name: Copy Targets
+      id: copy_targets
+      run: |
+        echo ">>> Copying hospitaladmissions to targets"
+        cp -rf ./repo/auxiliary-data/covid-19/epidemiological/hospitaladmissions.csv ./repo/target-data/covid-19/hospitaladmissions.csv
+        echo ">>> hospitaladmissions copy completed"
+    
+
     # Commit changes to dt
     # -----------------------------------------
     - name: Commit data repo changes
