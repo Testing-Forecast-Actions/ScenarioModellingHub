@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-  import_erviss_data_job:
+  import_iliplus_data_job:
     # if: github.repository_owner == 'european-modelling-hubs'
     runs-on: ubuntu-latest
     outputs:
@@ -71,11 +71,11 @@ jobs:
 
 
   # call-persisting-wf:
-  #   needs: import_erviss_data_job    
+  #   needs: import_iliplus_data_job    
   #   uses: Testing-Forecast-Actions/ScenarioModellingHub/.github/workflows/persist_changes.yml@main
   #   #uses: european-modelling-hubs/RespiCompass/.github/workflows/persist_changes.yml@main
   #   with:
-  #     changes-list: ${{ needs.import_erviss_data_job.outputs.changed_files }}
+  #     changes-list: ${{ needs.import_iliplus_data_job.outputs.changed_files }}
 
   #   secrets:
   #     envPAT: ${{ secrets.GITHUB_TOKEN }} 
