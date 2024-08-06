@@ -78,8 +78,9 @@ jobs:
 
 
   call-persisting-wf:
-    needs: import_erviss_data_job
-    uses: european-modelling-hubs/RespiCompass/.github/workflows/persist_changes.yml@main
+    needs: import_erviss_data_job    
+    uses: Testing-Forecast-Actions/ScenarioModellingHub/.github/workflows/persist_changes.yml@main
+    #uses: european-modelling-hubs/RespiCompass/.github/workflows/persist_changes.yml@main
     with:
       changes-list: ${{ needs.import_erviss_data_job.outputs.changed_files }}
 
