@@ -1,0 +1,17 @@
+origin_date,location,horizon,variant,output_type,output_type_id,value
+2024-03-15,MA,7,AA,sample,s0,1.54
+2024-03-15,MA,7,BB,sample,s0,23.55
+2024-03-15,MA,7,CC,sample,s0,1.54
+2024-03-15,MA,7,DD,sample,s0,1.54
+2024-03-15,MA,7,AA,sample,s1,1.54
+2024-03-15,MA,7,BB,sample,s1,23.55
+2024-03-15,MA,7,CC,sample,s1,1.54
+2024-03-15,MA,7,DD,sample,s1,23.55
+2024-03-15,MA,14,AA,sample,s2,1.54
+2024-03-15,MA,14,BB,sample,s2,23.55
+2024-03-15,MA,14,CC,sample,s2,1.54
+2024-03-15,MA,14,DD,sample,s2,23.55
+2024-03-15,MA,14,AA,sample,s3,1.54
+2024-03-15,MA,14,BB,sample,s3,23.55
+2024-03-15,MA,14,CC,sample,s3,1.54
+2024-03-15,MA,14,DD,sample,s3,23.55
