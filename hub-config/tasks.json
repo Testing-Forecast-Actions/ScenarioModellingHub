@@ -33,7 +33,7 @@
                         },
                         "pop_group": {
                             "required": null,
-                            "optional": ["0-4_vaxYes","0-4_vaxNo","5-14_vaxYes","5-14_vaxNo","total_vaxYes","total_vaxNo"]
+                            "optional": ["0-4_vaxYes","0-4_vaxNo"]
                         }
                     },
                     "output_type": {
