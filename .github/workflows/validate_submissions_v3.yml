@@ -8,11 +8,10 @@ on:
     paths:
       - 'model-output/**'
       - 'model-metadata/*'
-    
-    paths-ignore:
-      - '**.md'
-      - '**.MD'
-      
+      - '!**README**'
+      - '!**.md'
+      - '!**.MD'
+   
 jobs:
     validate-submission_job:
         runs-on: ubuntu-latest
