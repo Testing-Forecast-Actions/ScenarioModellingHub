@@ -8,7 +8,9 @@ on:
     paths:
       - 'model-output/**'
       - 'model-metadata/*'
-    
+      - '!**README**'
+      - '!**.md'
+      - '!**.MD'
    
 jobs:
     validate-submission_job:
