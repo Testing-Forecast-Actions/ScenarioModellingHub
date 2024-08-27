@@ -13,5 +13,13 @@
                 "model-output/ISI-FluABC/2024_2025_1_FLU-ISI-FluABC.parquet"
             ]
         }
+    ],
+    "ECDC": [
+        {
+            "model": "flumod",
+            "changes": [
+                "model-output/ECDC-flumod/2024_2025_1_FLU-ECDC-flumod.parquet"
+            ]
+        }
     ]
 }
