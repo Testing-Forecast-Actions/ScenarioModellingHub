@@ -71,6 +71,16 @@ jobs:
         - uses: r-lib/actions/setup-r-dependencies@v2
           with:
             packages: hubverse-org/hubValidations, any::sessioninfo
+
+
+        # Run Pyton code
+        # -------------------------
+        - uses: actions/setup-python@v4
+          with:
+            python-version: '3.10' 
+        
+        - run: pip install pandas
+
               
 
         # Validate data submission
