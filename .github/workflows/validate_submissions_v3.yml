@@ -105,7 +105,7 @@ jobs:
 
         - name: Validate derived task ids
           env:
-            data: ${{ steps.get_changed_files.outputs.all_changed_files }}
+            input_list: ${{ steps.get_changed_files.outputs.all_changed_files }}
           run: |
             python ./tools/code/validate_derived_task_ids.py
 
