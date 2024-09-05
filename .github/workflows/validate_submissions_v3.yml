@@ -22,8 +22,7 @@ jobs:
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
-          R_MAX_VSIZE: 32000000000
-
+          
         steps:
         - name: Checkout repository
           uses: actions/checkout@v3
@@ -31,6 +30,16 @@ jobs:
             ref: ${{ github.event.pull_request.head.sha }}
             fetch-depth: 1
 
+        # Checkout the python tools repo
+        # -------------------------------------------      
+        - name: checkout python tools repo
+          uses: actions/checkout@v3
+          with:
+            repository: 'european-modelling-hubs/hub-tools'
+            ref: 'main'
+            path: './tools/'
+            
+    
         # Get changes from pull request for later use
         # --------------------------------------------      
         - name: Get changes
@@ -83,6 +92,12 @@ jobs:
                                     
           shell: Rscript {0}
 
+
+        - name: Validate derived task ids
+          env:
+            data: ${{ steps.get_changed_files.outputs.all_changed_files }}
+          run: |
+            python ./tools/code/validate_derived_task_ids.py
 
 
         # Eventually comment on it
