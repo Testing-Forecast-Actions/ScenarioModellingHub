@@ -1,0 +1,50 @@
+name: TestWFRunStatus
+
+on: 
+  workflow_dispatch:
+
+  # scheduled run every Friday at 19.00 (18.00 UTC)
+  schedule:
+    - cron: '30 10 * * 3'
+    - cron: '45 10 * * 3'
+    - cron: '00 11 * * 3'
+
+jobs:
+  test_previous_run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: trace init
+        if: github.event.schedule != '30 10 * * 3'
+        run: |
+          echo "testing wf run"
+          exit(1)
+
+      # Step per ottenere le informazioni dell'ultima esecuzione      
+      - name: Get last workflow run
+        id: get_last_run
+        if: github.event.schedule != '45 10 * * 3'  // Only if wf is not running on friday        
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const response = await github.rest.actions.listWorkflowRuns({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'test_wf_run_status.yml', // workflow file name
+              per_page: 1, // Ottieni l'ultima esecuzione
+            });
+            const lastRun = response.data.workflow_runs[0];
+            core.setOutput('conclusion', lastRun.conclusion); // Imposta lo stato finale
+
+      # Step per controllare lo stato
+      - name: Check workflow result
+        if: ${{ github.event.schedule != '30 10 * * 3' && steps.get_last_run.outputs.conclusion == 'success' }}
+        run: |
+          echo "Previous run was successful. No need to run the workflow today."
+          exit 0 # Stop workflow run
+
+
+      # Step uscita
+      - name: Terminate workflow
+        run: echo "Terminating with success" 
+        
