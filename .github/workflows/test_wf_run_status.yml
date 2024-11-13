@@ -5,9 +5,9 @@ on:
 
   # scheduled run every Friday at 19.00 (18.00 UTC)
   schedule:
-    - cron: '30 10 * * 3'
-    - cron: '45 10 * * 3'
-    - cron: '00 11 * * 3'
+    - cron: '45 12 * * 3'
+    - cron: '55 12 * * 3'
+    - cron: '05 13 * * 3'
 
 jobs:
   test_previous_run:
@@ -23,7 +23,7 @@ jobs:
       # Step per ottenere le informazioni dell'ultima esecuzione      
       - name: Get last workflow run
         id: get_last_run
-        if: github.event.schedule != '45 10 * * 3'  // Only if wf is not running on friday        
+        if: github.event.schedule != '45 12 * * 3'  // Only if wf is not running on friday        
         uses: actions/github-script@v6
         with:
           script: |
@@ -38,7 +38,7 @@ jobs:
 
       # Step per controllare lo stato
       - name: Check workflow result
-        if: ${{ github.event.schedule != '30 10 * * 3' && steps.get_last_run.outputs.conclusion == 'success' }}
+        if: ${{ github.event.schedule != '45 12 * * 3' && steps.get_last_run.outputs.conclusion == 'success' }}
         run: |
           echo "Previous run was successful. No need to run the workflow today."
           exit 0 # Stop workflow run
