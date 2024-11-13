@@ -5,9 +5,9 @@ on:
 
   # scheduled run every Friday at 19.00 (18.00 UTC)
   schedule:
-    - cron: '50 15 * * 3'
-    - cron: '55 15 * * 3'
-    - cron: '00 16 * * 3'
+    - cron: '05 16 * * 3'
+    - cron: '10 16 * * 3'
+    - cron: '15 16 * * 3'
 
 jobs:
   test_previous_run:
@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: trace init
-        if: github.event.schedule == '50 15 * * 3'
+        if: github.event.schedule == '05 16 * * 3'
         run: |
           echo "testing wf run"
           exit 1
@@ -23,7 +23,7 @@ jobs:
       # Step per ottenere le informazioni dell'ultima esecuzione      
       - name: Get last workflow run
         id: get_last_run
-        if: github.event.schedule != '50 15 * * 3'
+        if: github.event.schedule != '05 16 * * 3'
         uses: actions/github-script@v6
         with:
           script: |
