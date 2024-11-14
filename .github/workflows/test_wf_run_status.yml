@@ -14,16 +14,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: trace init
-        if: github.event.schedule == '40 16 * * 3'
-        run: |
-          echo "testing wf run"
-          exit 1
+      # - name: trace init
+      #   if: github.event.schedule == '40 16 * * 3'
+      #   run: |
+      #     echo "testing wf run"
+      #     exit 1
 
       # Step per ottenere le informazioni dell'ultima esecuzione      
       - name: Get last workflow run
         id: get_last_run
-        if: github.event.schedule != '40 16 * * 3'
+        # if: github.event.schedule != '40 16 * * 3'
         uses: actions/github-script@v6
         with:
           script: |
@@ -42,7 +42,8 @@ jobs:
 
       # Step per controllare lo stato
       - name: Check workflow result
-        if: ${{ github.event.schedule != '40 16 * * 3' && steps.get_last_run.outputs.conclusion == 'success' }}
+        # if: ${{ github.event.schedule != '40 16 * * 3' && steps.get_last_run.outputs.conclusion == 'success' }}
+        if: ${{ steps.get_last_run.outputs.conclusion == 'success' }}
         run: |
           echo "Previous run was successful. No need to run the workflow today."
           exit 0 # Stop workflow run
