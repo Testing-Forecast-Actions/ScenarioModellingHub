@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - name: trace init
+      - name: trace init
       #   if: github.event.schedule == '40 16 * * 3'
-      #   run: |
-      #     echo "testing wf run"
-      #     exit 1
+        run: |
+          echo "testing wf run - failure"
+          exit 1
 
       # Step per ottenere le informazioni dell'ultima esecuzione      
       - name: Get last workflow run
