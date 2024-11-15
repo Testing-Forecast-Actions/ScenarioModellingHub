@@ -57,7 +57,7 @@ jobs:
             const response = await github.rest.actions.listWorkflowRuns({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              run_id: `${LAST_RUN_ID}`
+              run_id: ${LAST_RUN_ID}
             });
             console.log('\n\n-------------------------\n')
             console.log('RERUNNING WORKFLOW: \n')
