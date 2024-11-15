@@ -57,10 +57,11 @@ jobs:
             console.log('In the re run last workflow step')
             const { LAST_RUN_ID } = process.env
             console.log(`Input run id: ${LAST_RUN_ID}`)
-            const response = await github.rest.actions.reRunWorkflow({
+            const response = await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              run_id: `${LAST_RUN_ID}`
+              workflow_id: 'import_truth.yml',
+              ref = 'main'
             });
             console.log('\n\n-------------------------\n')
             console.log('RERUNNING WORKFLOW: \n')
