@@ -54,17 +54,18 @@ jobs:
           
         with:
           script: |
-            const { LAST_RUN_ID } = process.env
-            console.log(`Input run id: ${LAST_RUN_ID}`)
-            # const response = await github.rest.actions.listWorkflowRuns({
-            #   owner: context.repo.owner,
-            #   repo: context.repo.repo,
-            #   run_id: ${LAST_RUN_ID}
-            # });
-            console.log('\n\n-------------------------\n')
-            console.log('RERUNNING WORKFLOW: \n')
-            # console.log(response)
-            console.log('\n\n-------------------------\n')
+            console.log('In the re run last workflow step')
+            # const { LAST_RUN_ID } = process.env
+            # console.log(`Input run id: ${LAST_RUN_ID}`)
+            # # const response = await github.rest.actions.listWorkflowRuns({
+            # #   owner: context.repo.owner,
+            # #   repo: context.repo.repo,
+            # #   run_id: ${LAST_RUN_ID}
+            # # });
+            # console.log('\n\n-------------------------\n')
+            # console.log('RERUNNING WORKFLOW: \n')
+            # # console.log(response)
+            # console.log('\n\n-------------------------\n')
             
       # Step uscita
       - name: Terminate workflow
