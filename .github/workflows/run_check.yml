@@ -45,16 +45,16 @@ jobs:
       #     echo "Previous run was successful. No need to run the workflow today."
       #     exit 0 # Stop workflow run
   
-      # - name: Re run last workflow
-      #   id: re_run_wf
+      - name: Re run last workflow
+        id: re_run_wf
       #   # if: ${{ steps.get_last_run.outputs.conclusion != 'success' }}
-      #   uses: actions/github-script@v6
+        uses: actions/github-script@v6
       #   env:
       #     LAST_RUN_ID: ${{ steps.get_last_run.outputs.run_id }}
           
-      #   with:
-      #     script: |
-      #       console.log('In the re run last workflow step')
+        with:
+          script: |
+            console.log('In the re run last workflow step')
       #       # const { LAST_RUN_ID } = process.env
       #       # console.log(`Input run id: ${LAST_RUN_ID}`)
       #       # # const response = await github.rest.actions.listWorkflowRuns({
