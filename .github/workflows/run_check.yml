@@ -55,8 +55,8 @@ jobs:
         with:
           script: |
             console.log('In the re run last workflow step')
-      #       # const { LAST_RUN_ID } = process.env
-      #       # console.log(`Input run id: ${LAST_RUN_ID}`)
+            const { LAST_RUN_ID } = process.env
+            console.log('Input run id: ${LAST_RUN_ID}')
       #       # # const response = await github.rest.actions.listWorkflowRuns({
       #       # #   owner: context.repo.owner,
       #       # #   repo: context.repo.repo,
