@@ -18,7 +18,7 @@ jobs:
       #   if: github.event.schedule == '40 16 * * 3'
         run: |
           echo "testing wf run - failure"
-          exit 1
+          exit 0
 
       # Step per ottenere le informazioni dell'ultima esecuzione      
       - name: Get last workflow run
