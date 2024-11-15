@@ -34,6 +34,11 @@ jobs:
               per_page: 1,
             });
             const lastRun = response.data.workflow_runs[0];
+            console.log('\n\n-------------------------\n')
+            console.log('WORKFLOW RUNS: \n')
+            console.log(response.data.workflow_runs)
+            console.log('\n\n-------------------------\n')
+            
             console.log('Response: \n')
             console.log(lastRun)
             console.log(lastRun.conclusion)
