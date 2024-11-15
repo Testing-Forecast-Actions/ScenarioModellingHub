@@ -49,8 +49,8 @@ jobs:
         id: re_run_wf
       #   # if: ${{ steps.get_last_run.outputs.conclusion != 'success' }}
         uses: actions/github-script@v6
-      #   env:
-      #     LAST_RUN_ID: ${{ steps.get_last_run.outputs.run_id }}
+        env:
+          LAST_RUN_ID: ${{ steps.get_last_run.outputs.run_id }}
           
         with:
           script: |
