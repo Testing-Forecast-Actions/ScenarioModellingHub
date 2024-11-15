@@ -61,7 +61,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: 'import_truth.yml',
-              ref = 'main',
+              ref: 'main',
             });
             console.log('\n\n-------------------------\n')
             console.log('RERUNNING WORKFLOW: \n')
