@@ -34,7 +34,9 @@ jobs:
             core.setOutput('run_id', lastRun.id)
 
       - name: print the status
-        run: echo "${{steps.get_last_run.outputs.conclusion}}"
+        run: |
+          echo "${{steps.get_last_run.outputs.conclusion}}"
+          echo "${{steps.get_last_run.outputs.run_id}}"
 
       # Step per controllare lo stato
       # - name: Check workflow result
